@@ -36,8 +36,6 @@ string intToString(int n) {
     return s;
 }
 
-// --- GLOBAL VARIABLES (No Vectors/Structs) ---
-// Game Settings
 const int WIDTH = 40;
 const int HEIGHT = 20;
 
@@ -65,7 +63,6 @@ int obsX[50];
 int obsY[50];
 int obsCount;
 
-// --- BIG FONT DRAWING ---
 // Draws a 5x5 representation of a character, scaled to 'size'
 void drawBigChar(char c, int startX, int startY, int size, int color) {
     setColor(color);
@@ -204,7 +201,7 @@ void animLose() {
         // Width = 9 * (s + 2) roughly
         int totalWidth = 9 * (s + 2);
         int startX = (80 - totalWidth) / 2; // Assuming 80 width console
-        if(startX < 0) startX = 0;
+        if(startX < 0) startX = 5;
         int startY = 5;
 
         drawString("YOU LOSE!", startX, startY, s, col);
@@ -215,7 +212,7 @@ void animLose() {
 
 void animLevel(int lvl) {
     system("cls");
-    string txt = "LEVEL " + intToString(lvl);
+    string txt = "NIVEL " + intToString(lvl);
     // n=5, 3 seconds, interval? Implicitly maybe blink?
     // "intercalate between green and white... for 3 seconds"
     // Let's blink 6 times (500ms each)
@@ -349,7 +346,7 @@ void drawGame() {
     for(int i=0; i<WIDTH+2; i++) cout << "#";
     cout << endl;
     
-    cout << "Player: " << currentPlayerName << " | Level: " << level << "/5" << " | Goal: " << fruitsEaten << "/5" << endl;
+    cout << "Jugador: " << currentPlayerName << " | Nivel: " << level << "/5" << " | Meta: " << fruitsEaten << "/5" << endl;
 }
 
 void input() {
@@ -410,10 +407,10 @@ void logic() {
 void sortAndShowWinners() {
     system("cls");
     setColor(7);
-    cout << "=== LEADERBOARD ===" << endl;
-    cout << "1. Sort Alphabetical" << endl;
-    cout << "2. Sort by Length (Longest First)" << endl;
-    cout << "Choice: ";
+    cout << "=== CLASIFICACION ===" << endl;
+    cout << "1. Por orden alfabetico" << endl;
+    cout << "2. Por longitud" << endl;
+    cout << "Opcion: ";
     int mode; cin >> mode;
     
     string tempWins[100];
@@ -439,11 +436,11 @@ void sortAndShowWinners() {
         }
     }
     
-    cout << "\n--- WINNERS ---\n";
+    cout << "\n--- GANADORES ---\n";
     for(int i=0; i<winnersCount; i++) {
         cout << (i+1) << ". " << tempWins[i] << endl; 
     }
-    cout << "\nPress any key..." << endl;
+    cout << "\nPresiona cualquier tecla..." << endl;
     _getch();
 }
 
@@ -454,8 +451,8 @@ int main() {
     bool appRunning = true;
     while(appRunning) {
         system("cls");
-        cout << "--- SNAKE 5 LEVELS ---" << endl;
-        cout << "Enter Name: ";
+        cout << "--- Snake 5 Niveles ---" << endl;
+        cout << "Ingresa tu nombre: ";
         cin >> currentPlayerName;
         
         level = 1;
@@ -481,7 +478,7 @@ int main() {
         }
         
         system("cls");
-        cout << "Play Again? (y/n): ";
+        cout << "Jugar otra vez? (y/n): ";
         char c; cin >> c;
         if(c != 'y' && c != 'Y') appRunning = false;
     }

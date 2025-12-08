@@ -25,6 +25,17 @@ void setColor(int color) {
     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
 }
 
+string intToString(int n) {
+    if (n == 0) return "0";
+    string s = "";
+    while (n > 0) {
+        char c = '0' + (n % 10);
+        s = c + s;
+        n /= 10;
+    }
+    return s;
+}
+
 // --- GLOBAL VARIABLES (No Vectors/Structs) ---
 // Game Settings
 const int WIDTH = 40;
@@ -204,7 +215,7 @@ void animLose() {
 
 void animLevel(int lvl) {
     system("cls");
-    string txt = "LEVEL " + to_string (lvl);
+    string txt = "LEVEL " + intToString(lvl);
     // n=5, 3 seconds, interval? Implicitly maybe blink?
     // "intercalate between green and white... for 3 seconds"
     // Let's blink 6 times (500ms each)

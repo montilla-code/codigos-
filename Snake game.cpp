@@ -441,14 +441,14 @@ void ordenarYMostrarGanadores() {
     string tempWins[100];
     for(int i=0; i<conteoGanadores; i++) tempWins[i] = ganadores[i];
     
-    // Bubble Sort
+    // Metodo burbuja
     for(int i=0; i<conteoGanadores-1; i++) {
         for(int j=0; j<conteoGanadores-i-1; j++) {
             bool swapNeeded = false;
             if(mode == 1) {
                 if(tempWins[j] > tempWins[j+1]) swapNeeded = true;
             } else {
-                // By length
+                // Por longitud
                 if(tempWins[j].length() < tempWins[j+1].length()) swapNeeded = true; // Descending
                 else if(tempWins[j].length() == tempWins[j+1].length() && tempWins[j] > tempWins[j+1]) swapNeeded = true; // Alpha fallback
             }
@@ -473,8 +473,8 @@ int main() {
     srand(time(NULL));
     hideCursor();
     
-    bool aplicacionCorriendo = true;
-    while(aplicacionCorriendo) {
+    bool appRunning = true;
+    while(appRunning) {
         system("cls");
         cout << "--- Snake 5 Niveles ---" << endl;
         cout << "Ingresa tu nombre: ";
@@ -505,7 +505,7 @@ int main() {
         system("cls");
         cout << "Jugar otra vez? (y/n): ";
         char c; cin >> c;
-        if(c != 'y' && c != 'Y') aplicacionCorriendo = false;
+        if(c != 'y' && c != 'Y') appRunning = false;
     }
     
     return 0;

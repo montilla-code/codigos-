@@ -6,7 +6,7 @@
 
 using namespace std;
 
-// --- UTILS ---
+// Funciones varias y utilidades
 void gotoxy(int x, int y) {
     COORD coord;
     coord.X = x;
